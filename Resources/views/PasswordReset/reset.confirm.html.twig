@@ -1,0 +1,20 @@
+{% extends 'security.html.twig' %}
+
+
+{% block body %}
+    <div class="box wide">
+        <div class="header">
+            <h1 class="title">
+                <i class="fa fa-lock" aria-hidden="true"></i> {% block title %}{{ 'reset_password.form_confirm.title'|trans({}, 'PLejeuneUser') }}{% endblock %}
+            </h1>
+        </div>
+        <div class="body">
+            {{ 'reset_password.form_confirm.body'|trans({}, 'PLejeuneUser') }}
+        </div>
+        <div class="footer">
+            <a href="{{ path('plejeune_user_login') }}" class="button custom expanded">
+                {{ 'login'|trans({}, 'PLejeuneUser') }}
+            </a>
+        </div>
+    </div>
+{% endblock %}

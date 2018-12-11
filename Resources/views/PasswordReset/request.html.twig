@@ -1,0 +1,36 @@
+{% extends 'security.html.twig' %}
+
+
+{% block body %}
+    {{ form_start(form) }}
+    <div class="box wide">
+        <div class="header">
+            <h1 class="title">
+                <i class="fa fa-lock" aria-hidden="true"></i> {% block title %}{{ 'reset_password.request.title'|trans({}, 'PLejeuneUser') }}{% endblock %}
+            </h1>
+        </div>
+        <div class="body">
+            {{ form_errors(form) }}
+            {{ form_row(form.username) }}
+        </div>
+        <div class="footer">
+            <div class="grid grid-x grid-padding-x">
+                <div class="cell medium-6">
+                    {{ form_row(form.submit) }}
+                </div>
+                <div class="cell medium-6 text-right">
+                    <small>
+                        <a href="{{ path('plejeune_user_login') }}">
+                            {{ 'login'|trans({}, 'PLejeuneUser') }}
+                        </a>
+                        <br/>
+                        <a href="{{ path('plejeune_user_registration') }}">
+                            {{ 'registration'|trans({}, 'PLejeuneUser') }}
+                        </a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

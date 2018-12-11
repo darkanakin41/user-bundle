@@ -1,0 +1,8 @@
+{% extends "mail.html.twig" %}
+
+{% block body %}
+{{ 'mail.registration.body'|trans({
+    '%homepage%' : absolute_url(path('front')),
+    '%validation_url%' : absolute_url(path('plejeune_user_registration_validate',{'token' : user.token}))}
+, 'PLejeuneUser')|raw }}
+{% endblock %}

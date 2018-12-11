@@ -1,0 +1,14 @@
+services:
+    PLejeune\UserBundle\Repository\UserRepository:
+        autowire: true
+        tags: ['doctrine.repository_service']
+    PLejeune\UserBundle\Security\UsernameAndEmailAuthenticator:
+        autowire: true
+    PLejeune\UserBundle\Security\UserProvider:
+        autowire: true
+    plejeune.user:
+        public : true
+        class: PLejeune\UserBundle\Service\UserService
+        arguments: ["@service_container"]
+        tags:
+            -  { name: twig.extension }

@@ -1,0 +1,41 @@
+{% extends 'security.html.twig' %}
+
+
+{% block body %}
+    {{ form_start(form) }}
+    <div class="box wide">
+        <div class="header">
+            <h1 class="title">
+                <i class="fa fa-lock" aria-hidden="true"></i> {% block title %}{{ 'registration'|trans({}, 'PLejeuneUser') }}{% endblock %}
+            </h1>
+        </div>
+        <div class="body">
+            {{ form_row(form.firstname) }}
+            {{ form_row(form.lastname) }}
+            {{ form_row(form.date_naissance) }}
+            {{ form_row(form.username) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.password.first) }}
+            {{ form_row(form.password.second) }}
+        </div>
+        <div class="footer">
+            <div class="grid grid-x grid-padding-x">
+                <div class="cell medium-6">
+                    {{ form_widget(form.submit) }}
+                </div>
+                <div class="cell medium-6 text-right">
+                    <small>
+                        <a href="{{ path('plejeune_user_password_reset_request') }}">
+                            {{ 'forgotten_password'|trans({}, 'PLejeuneUser') }}
+                        </a>
+                        <br/>
+                        <a href="{{ path('plejeune_user_login') }}">
+                            {{ 'login'|trans({}, 'PLejeuneUser') }}
+                        </a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
