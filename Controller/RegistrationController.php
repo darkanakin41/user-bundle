@@ -60,7 +60,7 @@ class RegistrationController extends Controller
         $message = new \Swift_Message($this->get("translator")->trans("mail.registration.subject",[], "PLejeuneUser"));
         $message->setFrom("scoopturnfrance@gmail.com", "Scoop Turn");
         $message->setTo($user->getEmail());
-        $message->setBody($this->renderView("@PLejeuneUser/mail/registration.html.twig", ["user" => $user]), 'text/html');
+        $message->setBody($this->renderView("@PLejeuneUser/Mail/registration.html.twig", ["user" => $user]), 'text/html');
         $this->container->get("mailer")->send($message);
 
         $this->container->get("doctrine")->getManager()->persist($user);
