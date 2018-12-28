@@ -53,6 +53,7 @@ class ProfilController extends Controller
     /**
      * @Route("/update.html", name="plejeune_user_profile_update")
      * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
      */
     public function update(Request $request): Response
     {
@@ -72,7 +73,7 @@ class ProfilController extends Controller
         }
 
         if (!is_null($form->get("avatarFile")->getData())) {
-            $folder = sprintf("user/%d-%s/", $user->getId(), $this->get("plejeune.media.slugify")->slugify($user->getUsername()));
+            $folder = sprintf("user/%d-%s/", $user->getId(), $this->get("plejeune.core.slugify")->slugify($user->getUsername()));
             $new_avatar = $this->get("plejeune.media.fileupload")->upload($form->get("avatarFile")->getData(), "avatar", $folder);
             $old_avatar = $user->getAvatar();
             if (!is_null($old_avatar)) @unlink($old_avatar);
