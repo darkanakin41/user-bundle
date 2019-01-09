@@ -23,6 +23,7 @@
     "symfony/form": "*",
     "symfony/framework-bundle": "*",
     "symfony/orm-pack": "*",
+    "symfony/security-bundle": "*",
     "symfony/translation": "*",
     "symfony/twig-bundle": "*",
     "symfony/validator": "*",
