@@ -1,0 +1,112 @@
+{% extends "frontend.html.twig" %}
+
+{% block body %}
+    <header class="profil">
+        <div class="avatar">
+            <img src="{{ asset(user.avatar|default('assets/grumpy.png')) }}"/>
+        </div>
+        <div class="details">
+            <h1 class="title">
+                {{ user.firstname|title }} {{ user.lastname|title }}
+            </h1>
+            {% if user.titre is not empty %}
+                <h2 class="sub-title">
+                    {{ user.titre }}
+                </h2>
+            {% endif %}
+            <p><i class="fa fa-birthday-cake"></i> {{ user.dateNaissance|date('d/m/Y') }}
+                - {{ date_age(user.dateNaissance) }} ans</p>
+        </div>
+        <div class="social">
+            {% if user.facebook is not null %}
+                <a href="http://www.facebook.com/{{ user.facebook }}" class="button social facebook" target="_blank">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                    <span></span>
+                </a>
+            {% endif %}
+            {% if user.twitter is not null %}
+                <a href="http://www.twitter.com/{{ user.twitter }}" class="button social twitter" target="_blank">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                    <span></span>
+                </a>
+            {% endif %}
+            {% if user.twitch is not null %}
+                <a href="http://www.twitch.tv/{{ user.twitch }}" class="button social twitch" target="_blank">
+                    <i class="fab fa-twitch" aria-hidden="true"></i>
+                    <span></span>
+                </a>
+            {% endif %}
+            {% if user.instagram is not null %}
+                <a href="http://www.instagram.com/{{ user.instagram }}" class="button social instagram" target="_blank">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                    <span></span>
+                </a>
+            {% endif %}
+            {% if user.youtube is not null %}
+                <a href="http://www.youtube.com/{{ user.youtube }}" class="button social youtube" target="_blank">
+                    <i class="fab fa-youtube" aria-hidden="true"></i>
+                    <span></span>
+                </a>
+            {% endif %}
+        </div>
+    </header>
+    <div class="top-bar">
+        <div class="top-bar-center">
+            <ul class="menu">
+                <li>
+                    <a href="{{ path('darkanakin41_user_profile') }}">
+                        <i class="far fa-user-circle"></i> {{ 'profil.view'|trans({}, 'Darkanakin41User') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('darkanakin41_user_profile_edit') }}">
+                        <i class="far fa-edit"></i> {{ 'profil.edit'|trans({}, 'Darkanakin41User') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('darkanakin41_user_password_edit') }}">
+                        <i class="fab fa-keycdn"></i> {{ 'profil.change_password'|trans({}, 'Darkanakin41User') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('darkanakin41_user_profile_delete_confirm') }}">
+                        <i class="fa fa-user-minus"></i> {{ 'profil.delete_account'|trans({}, 'Darkanakin41User') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('darkanakin41_user_logout') }}">
+                        <i class="fas fa-sign-out-alt"></i> {{ 'logout'|trans({}, 'Darkanakin41User') }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% block content %}
+        <table>
+            <tr>
+                <th>{{ 'firstname'|trans({}, 'Darkanakin41User') }}</th>
+                <td>{{ user.firstname }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'lastname'|trans({}, 'Darkanakin41User') }}</th>
+                <td>{{ user.lastname }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'username'|trans({}, 'Darkanakin41User') }}</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'email'|trans({}, 'Darkanakin41User') }}</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'date_naissance'|trans({}, 'Darkanakin41User') }}</th>
+                <td>{{ user.dateNaissance|date('d/m/Y') }} - {{ date_age(user.dateNaissance) }} ans</td>
+            </tr>
+            <tr>
+                <th>{{ 'date_registration'|trans({}, 'Darkanakin41User') }}</th>
+                <td>{{ user.dateRegistration|date('d/m/Y') }} - {{ date_age(user.dateRegistration) }} ans</td>
+            </tr>
+        </table>
+    {% endblock %}
+{% endblock %}

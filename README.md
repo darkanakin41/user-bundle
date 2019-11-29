@@ -1,45 +1,48 @@
-## INSTALLATION
-Pour ajouter les routes, insérez le bloc suivant dans config/routes.yaml
+darkanakin41/user-bundle
+===
 
+This is a bundle that I created on first days of Symfony 4 in order to learn a bit more deeply how to handle 
+manually users without using the [FriendsOfSymfony/FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle/)
+
+# Installation
+First, you need to add the routes : 
 ```yaml
-plejeune_userbundle:
-    resource: "@PLejeuneUserBundle/Controller"
+darkanakin41_userbundle:
+    resource: "@Darkanakin41UserBundle/Controller"
     type: annotation
 ```
 
-Modifiez le fichier config/packages/framework.yaml comme suit
-
+Then update the ```config/packages/framework.yaml``` as follow in order to enable the security
 ```yaml
 framework:
     secret: '%env(APP_SECRET)%'
     csrf_protection: { enabled: true }
 ```
 
-Modifiez le fichier config/packages/security.yaml comme suit
+Then you need to update ```config/packages/security.yaml``` in order to tell Symfony to use my bundle in order to handle 
+security for users :
 ```yaml
 security :
     encoders:
-        PLejeune\UserBundle\Entity\User: bcrypt
+        Darkanakin41\UserBundle\Entity\User: bcrypt
     providers:
-        plejeune_user_provider : 
-            id: PLejeune\UserBundle\Security\UserProvider
-    role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        darkanakin41_user_provider : 
+            id: Darkanakin41\UserBundle\Security\UserProvider
     firewalls:
         main:
             pattern: ^/
             anonymous: true
             simple_form:
-                authenticator : PLejeune\UserBundle\Security\UsernameAndEmailAuthenticator
-                check_path: plejeune_user_login
-                login_path: plejeune_user_login
+                authenticator : Darkanakin41\UserBundle\Security\UsernameAndEmailAuthenticator
+                check_path: darkanakin41_user_login
+                login_path: darkanakin41_user_login
                 csrf_token_generator: security.csrf.token_manager
                 default_target_path: front
             logout:
-                path: plejeune_user_logout
+                path: darkanakin41_user_logout
                 target: front
-    access_control:
-        - { path: '^/', roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: '^/backend', roles: ROLE_ADMIN }
 ``` 
+
+# TODO 
+* Create some unit tests and setup a pipeline
+* Move to MappedSuperClass for entities

@@ -1,0 +1,10 @@
+{% extends "@Darkanakin41User/Profile/profile.html.twig" %}
+
+{% block content %}
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.old_password) }}
+    {{ form_row(form.password.first) }}
+    {{ form_row(form.password.second) }}
+    {{ form_end(form) }}
+{% endblock content %}

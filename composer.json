@@ -1,25 +1,25 @@
 {
-  "name": "plejeune/user-bundle",
+  "name": "darkanakin41/user-bundle",
   "type": "symfony-bundle",
   "description": "Pierre LEJEUNE UserBundle",
   "keywords": [
-    "Core Bundle"
+    "Core Bundle",
+    "security",
+    "symfony",
+    "user",
+    "bundle"
   ],
-  "repositories": [
-    { "type": "gitlab", "url": "https://gitlab.com/pierrelejeune/corebundle.git" }
-  ],
-  "homepage": "https://gitlab.com/pierrelejeune/corebundle",
+  "homepage": "https://github.com/darkanakin41/user-bundle",
   "license": "proprietary",
   "authors": [
     {
       "name": "Pierre LEJEUNE",
-      "email": "lejeune.pierre.41@gmail.com"
+      "email": "darkanakin41@gmail.com"
     }
   ],
   "require": {
     "php": "^7.0",
-    "knplabs/knp-menu-bundle": "^2.0",
-    "plejeune/core-bundle":"dev-master",
+    "darkanakin41/core-bundle": "dev-master",
     "symfony/form": "*",
     "symfony/framework-bundle": "*",
     "symfony/orm-pack": "*",
@@ -32,17 +32,14 @@
   "config": {
     "sort-packages": true
   },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "1.0"
-    }
-  },
   "autoload": {
     "psr-4": {
-      "PLejeune\\UserBundle\\": ""
-    },
-    "exclude-from-classmap": [
-      "/Tests/"
-    ]
+      "Darkanakin41\\UserBundle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Darkanakin41\\UserBundle\\Tests\\": "tests/"
+    }
   }
 }

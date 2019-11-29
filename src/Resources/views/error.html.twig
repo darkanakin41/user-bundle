@@ -1,0 +1,14 @@
+{% extends 'security.html.twig' %}
+
+{% block body %}
+        <div class="box login">
+            <div class="header">
+                <h1 class="title">
+                    <i class="fa fa-bug" aria-hidden="true"></i> {% block title %}{{ 'error.title'|trans({}, 'Darkanakin41User') }}{% endblock %}
+                </h1>
+            </div>
+            <div class="body">
+                {{ code|trans(parameters|default({}), "Darkanakin41User")|raw }}
+            </div>
+        </div>
+{% endblock %}

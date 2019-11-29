@@ -1,0 +1,14 @@
+services:
+    Darkanakin41\UserBundle\Repository\UserRepository:
+        autowire: true
+        tags: ['doctrine.repository_service']
+    Darkanakin41\UserBundle\Security\UsernameAndEmailAuthenticator:
+        autowire: true
+    Darkanakin41\UserBundle\Security\UserProvider:
+        autowire: true
+    darkanakin41.user:
+        public : true
+        class: Darkanakin41\UserBundle\Service\UserService
+        arguments: ["@service_container"]
+        tags:
+            -  { name: twig.extension }
