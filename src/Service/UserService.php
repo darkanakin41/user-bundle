@@ -5,8 +5,10 @@ namespace Darkanakin41\UserBundle\Service;
 
 use Darkanakin41\UserBundle\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-class UserService extends \Twig_Extension
+class UserService extends AbstractExtension
 {
 
     /**
@@ -26,7 +28,7 @@ class UserService extends \Twig_Extension
 
     public function getFunctions() {
         return array(
-            new \Twig_SimpleFunction('user_is_validated', array($this, 'isValidated')),
+            new TwigFunction('user_is_validated', array($this, 'isValidated')),
         );
     }
 
